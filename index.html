@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A24 COMPANY</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    font-family: "Bebas Neue",sans-serif;
+    background: linear-gradient(270deg, #000000, #ffffff);
+    background-size: 400% 400%;
+    animation: gradientBackgroundAnimation 15s ease infinite;
+}
+
+h1, h2 {
+    margin: 0;
+    line-height: 1;
+}
+h1{
+    font-size: 200px;
+}
+h2{
+    font-size: 53px;
+}
+a{
+    text-decoration: none;
+}
+@keyframes gradientBackgroundAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+.text-overlay {
+    position: relative;
+    color: transparent;
+    animation: gradientBackgroundAnimation 15s ease infinite;
+    background: linear-gradient(270deg, #ffffff, #000000);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+@keyframes gradientMaskAnimation {
+    0% { mask-position: 0% 50%; -webkit-mask-position: 0% 50%; }
+    50% { mask-position: 100% 50%; -webkit-mask-position: 100% 50%; }
+    100% { mask-position: 0% 50%; -webkit-mask-position: 0% 50%; }
+}
+    </style>
+</head>
+<body>
+    <div>
+        <a id="link" href="homepage.html">
+            <h1 class="text-overlay h1">A24</h1>
+            <h2 class="text-overlay">FILM INDUSTRY</h2>
+            <p class="text-overlay">click to visit</p>
+        </a>
+    </div>
+    <script>
+        document.getElementById('link').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default navigation behavior
+            const link = this.href;
+            const elements = document.querySelectorAll('.text-overlay'); // Select all elements with class 'text-overlay'
+            elements.forEach(element => {
+                element.style.opacity = 0; // Set opacity to 0 to initiate fade out
+            });
+            setTimeout(function() {
+                window.location.href = link; // Navigate to the destination after a delay
+            }, 1000); // Delay in milliseconds (0.5s)
+        });
+    </script>
+</body>
+</html>
